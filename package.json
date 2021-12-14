@@ -1,0 +1,23 @@
+{
+	"name": "rde",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"dependencies": {
+		"express": "^4.17.1",
+		"dotenv": "^10.0.0",
+		"mongoose": "^6.1.1",
+		"morgan": "^1.10.0",
+		"validator": "^13.7.0"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.15"
+	},
+	"scripts": {
+		"start-server:dev": "nodemon ./server.js --watch",
+		"start-server:prod": "set NODE_ENV = production && nodemon ./server.js --watch"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
+}
