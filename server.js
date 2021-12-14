@@ -5,10 +5,16 @@ const {
 	globalErrorMiddleware,
 } = require('./middlewares/globalErrorMiddleware');
 const { noHandleUrl } = require('./controllers/errorController');
+const morgan = require('morgan');
+const cityRoutes = require('./routes/cityRoutes');
 
 const db = require('./db/connect');
 
 const app = express();
+
+if (process.env.NODE_ENV === 'development') {
+	app.use(morgan('dev'));
+}
 
 const PORT = process.env.SERVER_PORT || 3000;
 
@@ -18,6 +24,8 @@ const initServer = catchAsyncHandler(async () => {
 	});
 	await db();
 });
+
+app.use('/api/v1/cities', cityRoutes);
 
 app.all('*', noHandleUrl);
 
